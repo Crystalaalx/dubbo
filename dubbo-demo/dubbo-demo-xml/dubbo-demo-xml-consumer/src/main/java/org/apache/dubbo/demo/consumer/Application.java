@@ -28,6 +28,7 @@ public class Application {
      * launch the application
      */
     public static void main(String[] args) throws Exception {
+        // 指定Spring配置文件，并启动ClassPathXmlApplicationContext
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/dubbo-consumer.xml");
         context.start();
         DemoService demoService = context.getBean("demoService", DemoService.class);

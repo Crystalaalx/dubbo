@@ -20,6 +20,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Application {
     public static void main(String[] args) throws Exception {
+        // 指定Spring配置文件，并启动ClassPathXmlApplicationContext
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/dubbo-provider.xml");
         context.start();
         System.in.read();

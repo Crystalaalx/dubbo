@@ -28,7 +28,7 @@ import java.util.concurrent.CompletableFuture;
 
 @Component("demoServiceComponent")
 public class DemoServiceComponent implements DemoService {
-    @Reference
+    @Reference //注入Dubbo服务
     private DemoService demoService;
 
     @Override
@@ -36,6 +36,11 @@ public class DemoServiceComponent implements DemoService {
         return demoService.sayHello(name);
     }
 
+    /**
+     * 异步方法
+     * @param name
+     * @return
+     */
     @Override
     public CompletableFuture<String> sayHelloAsync(String name) {
         return null;

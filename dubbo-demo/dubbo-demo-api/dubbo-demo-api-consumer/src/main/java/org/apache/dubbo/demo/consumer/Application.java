@@ -40,16 +40,19 @@ public class Application {
     }
 
     private static void runWithBootstrap() {
+        // 创建ReferenceConfig,其中指定了引用的接口DemoService
         ReferenceConfig<DemoService> reference = new ReferenceConfig<>();
         reference.setInterface(DemoService.class);
         reference.setGeneric("true");
 
+        // 创建DubboBootstrap，指定ApplicationConfig以及RegistryConfig
         DubboBootstrap bootstrap = DubboBootstrap.getInstance();
         bootstrap.application(new ApplicationConfig("dubbo-demo-api-consumer"))
                 .registry(new RegistryConfig("zookeeper://127.0.0.1:2181"))
                 .reference(reference)
                 .start();
 
+        // 获取DemoService实例并调用其方法
         DemoService demoService = ReferenceConfigCache.getCache().get(reference);
         String message = demoService.sayHello("dubbo");
         System.out.println(message);
